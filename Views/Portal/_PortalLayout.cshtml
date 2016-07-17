@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />    
+    <!-- Custom styles for this template -->
+    <link href="~/Content/DarklyTheme/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/DarklyTheme/variables.less" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/DarklyTheme/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/Portal/Home" class="navbar-brand">Resident Portal</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Portal/Home">Home</a></li>
+                    <li><a href="/Portal/About">About</a></li>
+                    <li><a href="/Portal/Contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <hr />
+        @RenderBody()        
+        <footer>
+            <p>&copy; 2016 - Resident Portal</p>
+        </footer>
+    </div>
+</body>
+</html>
