@@ -23,5 +23,10 @@ namespace ResidentPortal.Controllers
         {
             return View();
         }
+        //GET: SubmitTicket
+        public ActionResult SubmitTicket()
+        {
+            return View();
+        }
     }
 }

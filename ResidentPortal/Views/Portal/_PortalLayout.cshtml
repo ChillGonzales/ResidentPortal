@@ -3,41 +3,58 @@
 <html>
 <head>
     <!-- Custom styles for this template -->
-    @*<link href="~/Content/DarklyTheme/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/DarklyTheme/variables.less" rel="stylesheet" />*@
-    @*<link href="~/Content/DarklyTheme/bootstrap.min.css" rel="stylesheet" />*@
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />    
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/navleft.css" rel="stylesheet" />    
-    <meta name="viewport" content="width=device-width" />    
+    <meta name="viewport" content="width=device-width" />  
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+    
+      
     <title>@ViewBag.Title</title>
 </head>
 <body>
-  <div class="navbar navbar-inverse navbar-fixed-left">     
-      <a class="navbar-brand" href="/Portal/Home">Resident Portal</a>           
-      <ul class="nav navbar-nav">
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Maintenance<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Submit a Work Order</a></li>
-                  <li><a href="#">Manage Work Orders</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Submit Feedback</a></li>
-              </ul>
-          </li>
-          <li><a href="/Portal/Home">Home</a></li>
-          <li><a href="/Portal/About">About</a></li>
-          <li><a href="/Portal/Contact">Contact</a></li>
-      </ul>             
+    <div class="navbar navbar-inverse navbar-fixed-left">     
+    <a class="navbar-brand" href="/Portal/Home">Resident Portal</a>           
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Maintenance<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="/Portal/SubmitTicket">Submit a Work Order</a></li>
+                    <li><a href="#">Manage Work Orders</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Submit Feedback</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Payments<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="/Portal/MakePayment">Make A Payment</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Portal/AutoPay">Set Up Auto Pay</a></li>
+                    <li><a href="/Portal/PayHistory">View Payment History</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">                    
+                    <li><a href="/Portal/ViewMessages">View Messages</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Portal/Contact">Send A Message</a></li>
+                </ul>      
+            </li>              
+            <li><a href="/Portal/Documents">Documents</a></li>
     </div>    
     <div class="container">
-        <div class="row">
-            @RenderBody()           
-            <footer>
-                <p>&copy; 2016 - Resident Portal</p>
-            </footer>    
-        </div>
+    <div class="row">
+        @RenderBody()           
+        <footer>
+            <p>&copy; 2016 - Resident Portal</p>
+        </footer>    
     </div>
-
+    </div>
 </body>
 </html>
