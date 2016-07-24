@@ -9,27 +9,32 @@ namespace ResidentPortal.Models
 {
     public class PortalModel
     {
-        //public static void ConnectDB(string connectStr)
-        //{
-        //    try
-        //    {
-        //        using (OdbcConnection connection = new OdbcConnection(ConfigurationManager.ConnectionStrings["MySQLConnStr"].ConnectionString))
-        //        {
-        //            connection.Open();
-        //            using (OdbcCommand command = new OdbcCommand("SELECT name FROM test_users", connection))
-        //            using (OdbcDataReader dr = command.ExecuteReader())
-        //            {
-        //                while (dr.Read())
-        //                    Response.Write(dr["name"].ToString() + "<br />");
-        //                dr.Close();
-        //            }
-        //            connection.Close();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Response.Write("An error occured: " + ex.Message);
-        //    }
-        //}
+        public static string ConnectDB()
+        {
+            string word;
+            try
+            {
+                using (OdbcConnection connection = new OdbcConnection(ConfigurationManager.ConnectionStrings["RPContext"].ConnectionString))
+                {
+                    connection.Open();
+                    using (OdbcCommand command = new OdbcCommand("SELECT details FROM maint_ticket", connection))
+                    using (OdbcDataReader dr = command.ExecuteReader())
+                    {
+                        while (dr.Read())
+                            word = dr.GetString(0);
+                        dr.Close();
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                word = "An error occured: " + ex.ToString();
+            }
+            finally
+            {
+                return word;
+            }
+        }
     }
 }
