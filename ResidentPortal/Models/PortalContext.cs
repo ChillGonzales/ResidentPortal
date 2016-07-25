@@ -21,8 +21,7 @@ namespace ResidentPortal.Models
         }
 
         public DbSet<MaintenanceTicketModel> Tickets { get; set; }
-        
-
+                
 
         //public string SelectDB(string selectField)
         //{
@@ -48,6 +47,10 @@ namespace ResidentPortal.Models
         //    }
         //    return result;
         //}        
-
+        private volatile Type _dependency;
+        public void MyContext()
+        {
+             _dependency = typeof(MySql.Data.MySqlClient.MySqlProviderServices);            
+        }
     }
 }
