@@ -16,5 +16,7 @@ namespace ResidentPortal.Models
         public string Area { get; set; }
         public string Req_Date { get; set; }
         public string Details { get; set; }
+        public string timeSubmit { get; set; }
+        public string ticketClosed { get; set; }
     }
 }

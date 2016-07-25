@@ -39,6 +39,18 @@
     </fieldset>
 </form>
 <table border="1px">
+    <thead>
+        <tr>
+            <th colspan="5" text-align="center">All Open Tickets</th>
+        </tr>
+        <tr>
+            <th>Severity</th>
+            <th>Details</th>
+            <th>Requested Date</th>
+            <th>Problem Area</th>
+            <th>Time Submitted</th>
+        </tr>
+    </thead>
     @foreach (var ticket in Model)
     {
         <tr>
@@ -46,6 +58,7 @@
             <td>@ticket.Details</td>
             <td>@ticket.Req_Date</td>
             <td>@ticket.Area</td>
+            <td>@ticket.timeSubmit</td>
         </tr>        
     }
 </table>

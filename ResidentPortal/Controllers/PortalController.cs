@@ -30,7 +30,7 @@ namespace ResidentPortal.Controllers
         [HttpGet]
         public ActionResult SubmitTicket()
         {            
-            return View(_Db.Tickets.ToList());
+            return View(from s in _Db.Tickets where s.ticketClosed == "false" select s);
         }
         //POST: SubmitTicket
         [HttpPost]
@@ -40,13 +40,15 @@ namespace ResidentPortal.Controllers
             ticketToAdd.Area = form["area-select"];
             ticketToAdd.Details = form["details"];
             ticketToAdd.Severity = form["severity-select"];
-            ticketToAdd.Req_Date = form["date"];                        
+            ticketToAdd.Req_Date = form["date"];
+            ticketToAdd.timeSubmit = DateTime.Now.ToString();
+            ticketToAdd.ticketClosed = "false";
             if (ModelState.IsValid)
             {
                 _Db.Tickets.Add(ticketToAdd);
                 _Db.SaveChanges();
             }
-            return View(_Db.Tickets.ToList());
+            return View(from s in _Db.Tickets where s.ticketClosed == "false" select s);
         }
     }
 }

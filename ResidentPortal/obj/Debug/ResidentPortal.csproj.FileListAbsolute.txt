@@ -115,4 +115,3 @@ C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\Go
 C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\Google.ProtocolBuffers.Serialization.xml
 C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\MySql.Data.xml
 C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\MySql.Data.Entity.EF6.xml
-C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\obj\Debug\ResidentPortal.csprojResolveAssemblyReference.cache

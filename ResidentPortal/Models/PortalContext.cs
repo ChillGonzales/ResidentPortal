@@ -12,7 +12,7 @@ namespace ResidentPortal.Models
     {
         public PortalContext() : base("RPContext")
         {
-
+            Database.SetInitializer<PortalContext>(null);
         }
 
         public PortalContext Create()
@@ -21,32 +21,7 @@ namespace ResidentPortal.Models
         }
 
         public DbSet<MaintenanceTicketModel> Tickets { get; set; }
-                
-
-        //public string SelectDB(string selectField)
-        //{
-        //    string result = string.Empty;
-        //    try
-        //    {
-        //        using (OdbcConnection connection = new OdbcConnection(ConfigurationManager.ConnectionStrings["RPContext"].ConnectionString))
-        //        {
-        //            connection.Open();
-        //            using (OdbcCommand command = new OdbcCommand(String.Format("SELECT {0} FROM maint_ticket", selectField), connection))
-        //            using (OdbcDataReader dr = command.ExecuteReader())
-        //            {
-        //                while (dr.Read())
-        //                    result = dr.GetString(0);
-        //                dr.Close();
-        //            }
-        //            connection.Close();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return "An error occured: " + ex.ToString();
-        //    }
-        //    return result;
-        //}        
+       
         private volatile Type _dependency;
         public void MyContext()
         {
