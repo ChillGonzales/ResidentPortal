@@ -29,19 +29,24 @@ namespace ResidentPortal.Controllers
         //GET: SubmitTicket
         [HttpGet]
         public ActionResult SubmitTicket()
-        {
-            return View();
+        {            
+            return View(_Db.Tickets.ToList());
         }
         //POST: SubmitTicket
         [HttpPost]
-        public ActionResult SubmitTicket(MaintenanceTicketModel ticket)
-        {            
+        public ActionResult SubmitTicket(FormCollection form)
+        {
+            var ticketToAdd = new MaintenanceTicketModel();
+            ticketToAdd.Area = form["area-select"];
+            ticketToAdd.Details = form["details"];
+            ticketToAdd.Severity = form["severity-select"];
+            ticketToAdd.Req_Date = form["date"];                        
             if (ModelState.IsValid)
             {
-                _Db.Tickets.Add(ticket);
+                _Db.Tickets.Add(ticketToAdd);
                 _Db.SaveChanges();
             }
-            return View();
+            return View(_Db.Tickets.ToList());
         }
     }
 }

@@ -1,15 +1,15 @@
-﻿
-@{
+﻿@model IEnumerable<ResidentPortal.Models.MaintenanceTicketModel>
+@{    
     ViewBag.Title = "Submit A Ticket";
     Layout = "~/Views/Portal/_PortalLayout.cshtml";
 }
 
 <h2>Submit A Maintenance Ticket</h2>
 
-<form method="post">
+<form name="TicketForm" onsubmit="return ValidateForm()" method="post">
     <fieldset class="form-group">
         <label for="serverity-select">Select Severity</label>
-        <select class="form-control" id="severity-select">
+        <select class="form-control" id="severity-select" name="severity-select">
             <option>Low</option>
             <option>Moderate</option>
             <option>Immediate</option>
@@ -17,7 +17,7 @@
     </fieldset>
     <fieldset class="form-group">
         <label for="area-select">Select Area</label>
-        <select class="form-control" id="area-select">
+        <select class="form-control" id="area-select" name="area-select">
             <option>Bedroom</option>
             <option>Bathroom</option>
             <option>Kitchen</option>
@@ -30,15 +30,35 @@
         <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
     </fieldset>
     <fieldset class="form-group">
-        <label class="text-label" for="detail">Additional Detail</label>
-        <textarea class="form-control" id="textarea" rows="3"></textarea>
+        <label class="text-label" for="details">Additional Detail</label>
+        <textarea class="form-control" id="textarea" name="details" rows="3"></textarea>
     </fieldset>
     <fieldset class="form-group">
         <!-- Submit button -->
         <button class="btn btn-primary" name="submit" type="submit">Submit</button>
     </fieldset>
 </form>
-
+<table border="1px">
+    @foreach (var ticket in Model)
+    {
+        <tr>
+            <td>@ticket.Severity</td>
+            <td>@ticket.Details</td>
+            <td>@ticket.Req_Date</td>
+            <td>@ticket.Area</td>
+        </tr>        
+    }
+</table>
+<script>
+    function ValidateForm() {
+        var date = document.forms["TicketForm"]["date"].value;
+        var detail = document.forms["TicketForm"]["details"].value;
+        if (date == "" || detail == "") {
+            alert("All Fields Must Have A Value!");
+            return false;
+        }
+    }
+</script>
 <script>
     $(document).ready(function(){
       var date_input=$('input[name="date"]'); //our date input has the name "date"
