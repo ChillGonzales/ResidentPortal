@@ -28,13 +28,13 @@ namespace ResidentPortal.Controllers
         }
         //GET: SubmitTicket
         [HttpGet]
-        public ActionResult SubmitTicket()
+        public ActionResult ViewTickets()
         {            
             return View(from s in _Db.Tickets where s.ticketClosed == "false" select s);
         }
         //POST: SubmitTicket
         [HttpPost]
-        public ActionResult SubmitTicket(FormCollection form)
+        public ActionResult ViewTickets(FormCollection form)
         {
             var ticketToAdd = new MaintenanceTicketModel();
             ticketToAdd.Area = form["area-select"];
