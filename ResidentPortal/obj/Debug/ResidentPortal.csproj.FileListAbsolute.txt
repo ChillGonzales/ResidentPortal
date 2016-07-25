@@ -107,4 +107,11 @@ C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\Mi
 C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\obj\Debug\ResidentPortal.dll
 C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\obj\Debug\ResidentPortal.pdb
-C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\obj\Debug\ResidentPortal.csprojResolveAssemblyReference.cache
+C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\Google.ProtocolBuffers.dll
+C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\Google.ProtocolBuffers.Serialization.dll
+C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\MySql.Data.dll
+C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\MySql.Data.Entity.EF6.dll
+C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\Google.ProtocolBuffers.xml
+C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\Google.ProtocolBuffers.Serialization.xml
+C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\MySql.Data.xml
+C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\MySql.Data.Entity.EF6.xml
