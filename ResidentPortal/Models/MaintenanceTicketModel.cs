@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ResidentPortal.Models
 {
-    [Table("maint_ticket")]
+    [Table("maint_ticket")]    
     public class MaintenanceTicketModel
     {
         [Key]

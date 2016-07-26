@@ -16,8 +16,8 @@ namespace ResidentPortal.Controllers
         {
             return View();
         }
-        //GET: About
-        public ActionResult About()
+        //POST: Login
+        public ActionResult Login()
         {
             return View();
         }
@@ -56,7 +56,8 @@ namespace ResidentPortal.Controllers
         {
             var message = new MessageModel();
             message.Subject = form["subject"];
-            message.Body = form["body"];
+            message.Body = form["msgbody"];
+            message.SendMessage();
             return View(message);
         }
     }

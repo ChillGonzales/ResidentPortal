@@ -1,15 +1,6 @@
 ﻿@{
     ViewBag.Title = "Message Sent!";
     Layout = "~/Views/Portal/_PortalLayout.cshtml";
-
-    var MessageSubject = Request["subject"];
-    var MessageBody = Request["msgbody"];
-    WebMail.SmtpServer = "smtp.google.com";
-    WebMail.SmtpPort = 587;
-    WebMail.UserName = "cmmonroe2010";
-    WebMail.Password = "msuspartans";
-    WebMail.From = "Admin@Webmail.com";
-    WebMail.Send(to: "colin.monroe@gentex.com", subject: "Help Request- " + MessageSubject, body: MessageBody);
 }
 <div class="container">
     <div class="jumbotron" style="text-align: center">Thank you for reaching out.</div>

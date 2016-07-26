@@ -4,51 +4,18 @@
     Layout = "~/Views/Portal/_PortalLayout.cshtml";
 }
 
-<h2>View Open Maintenance Tickets</h2>
-
-@*<form name="TicketForm" onsubmit="return ValidateForm()" method="post">
-    <fieldset class="form-group">
-        <label for="serverity-select">Select Severity</label>
-        <select class="form-control" id="severity-select" name="severity-select">
-            <option>Low</option>
-            <option>Moderate</option>
-            <option>Immediate</option>
-        </select>
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="area-select">Select Area</label>
-        <select class="form-control" id="area-select" name="area-select">
-            <option>Bedroom</option>
-            <option>Bathroom</option>
-            <option>Kitchen</option>
-            <option>Living Room</option>
-        </select>
-    </fieldset>
-    <fieldset class="form-group">
-        <!-- Date input -->
-        <label class="control-label" for="date">Date</label>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
-    </fieldset>
-    <fieldset class="form-group">
-        <label class="text-label" for="details">Additional Detail</label>
-        <textarea class="form-control" id="textarea" name="details" rows="3"></textarea>
-    </fieldset>
-    <fieldset class="form-group">
-        <!-- Submit button -->
-        <button class="btn btn-primary" name="submit" type="submit">Submit</button>
-    </fieldset>
-</form>*@
-<table border="1px">
+<h2 style="text-align:center">View Open Maintenance Tickets</h2>
+<table border="1px" align="center">
     <thead>
         <tr>
-            <th colspan="5" text-align="center">All Open Tickets</th>
+            <th colspan="5" style="text-align: center">All Open Tickets</th>
         </tr>
         <tr>
-            <th>Severity</th>
-            <th>Details</th>
-            <th>Requested Date</th>
-            <th>Problem Area</th>
-            <th>Time Submitted</th>
+            <th style="text-align:center">Severity</th>
+            <th style="text-align:center">Details</th>
+            <th style="text-align:center">Requested Date</th>
+            <th style="text-align:center">Problem Area</th>
+            <th style="text-align:center">Time Submitted</th>
         </tr>
     </thead>
     @foreach (var ticket in Model)
@@ -62,27 +29,4 @@
         </tr>        
     }
 </table>
-<script>
-    function ValidateForm() {
-        var date = document.forms["TicketForm"]["date"].value;
-        var detail = document.forms["TicketForm"]["details"].value;
-        if (date == "" || detail == "") {
-            alert("All Fields Must Have A Value!");
-            return false;
-        }
-    }
-</script>
-<script>
-    $(document).ready(function(){
-      var date_input=$('input[name="date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-</script>
 
