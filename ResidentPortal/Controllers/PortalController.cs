@@ -50,5 +50,14 @@ namespace ResidentPortal.Controllers
             }
             return View(from s in _Db.Tickets where s.ticketClosed == "false" select s);
         }
+        //GET: SendMessage
+        [HttpPost]
+        public ActionResult MessageSent(FormCollection form)
+        {
+            var message = new MessageModel();
+            message.Subject = form["subject"];
+            message.Body = form["body"];
+            return View(message);
+        }
     }
 }

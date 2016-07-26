@@ -41,12 +41,13 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">                    
-                    <li><a href="/Portal/ViewMessages">View Messages</a></li>
+                    <li><a href="#ModalSendMessage" data-toggle="modal">Send A Message</a></li>
                     <li class="divider"></li>
-                    <li><a href="/Portal/Contact">Send A Message</a></li>
+                    <li><a href="/Portal/MessageCenter">Message Center</a></li>
                 </ul>      
             </li>              
             <li><a href="/Portal/Documents">Documents</a></li>
+        </ul>
     </div>    
     <!-- Modal -->
     <div id="ModalSubmit" class="modal fade" role="dialog">
@@ -99,6 +100,32 @@
 
         </div>
     </div>
+    <div id="ModalSendMessage" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Send Message</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="SendMessage" onsubmit="return ValidateMessage()" method="post" action="/Portal/MessageSent"> 
+                        <fieldset class="form-group">
+                            <label class="text-label" for="subject">Subject</label>
+                            <textarea class="form-control" id="subject" name="subject" rows="1"></textarea>
+                        </fieldset>                                                             
+                        <fieldset class="form-group">
+                            <label class="text-label" for="msgbody">Message</label>
+                            <textarea class="form-control" id="msgbody" name="msgbody" rows="4"></textarea>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <!-- Submit button -->
+                            <button class="btn btn-primary" name="sendmsg" type="submit">Send Message</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             @RenderBody()
@@ -116,6 +143,19 @@
         if (date == "" || detail == "") {
             alert("All Fields Must Have A Value!");
             return false;
+        }
+    }
+</script>
+<script>
+    function ValidateMessage() {
+        var date = document.forms["SendMessage"]["subject"].value;
+        var detail = document.forms["SendMessage"]["msgbody"].value;
+        if (date == "" || detail == "") {
+            alert("All Fields Must Have A Value!");
+            return false;
+        }
+        else {
+
         }
     }
 </script>

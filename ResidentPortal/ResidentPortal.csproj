@@ -181,6 +181,7 @@
     <Compile Include="Models\PortalContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Models\MessageModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -225,6 +226,8 @@
     <Content Include="Views\Portal\Home.cshtml" />
     <Content Include="Views\Portal\Contact.cshtml" />
     <Content Include="Views\Portal\ViewTickets.cshtml" />
+    <Content Include="Views\Portal\MessageSent.cshtml" />
+    <Content Include="Views\Portal\ProcessRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
