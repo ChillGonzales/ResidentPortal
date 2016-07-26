@@ -47,8 +47,18 @@
                 </ul>      
             </li>              
             <li><a href="/Portal/Documents">Documents</a></li>
+            <li><a style="text-align:right" href="#ModalLogin" data-toggle="modal">Login</a></li>
         </ul>
     </div>    
+    <div id="ModalLogin" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @Html.Partial("LoginPartial")
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Modal -->
     <div id="ModalSubmit" class="modal fade" role="dialog">
         <div class="modal-dialog">

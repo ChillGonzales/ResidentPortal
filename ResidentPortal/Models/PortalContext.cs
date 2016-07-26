@@ -20,6 +20,7 @@ namespace ResidentPortal.Models
         }
 
         public DbSet<MaintenanceTicketModel> Tickets { get; set; }
+        public DbSet<UserModel> Users { get; set; }
        
         private volatile Type _dependency;
         public void MyContext()

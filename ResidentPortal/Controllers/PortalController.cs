@@ -17,7 +17,30 @@ namespace ResidentPortal.Controllers
             return View();
         }
         //POST: Login
-        public ActionResult Login()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateUser(FormCollection form)
+        {
+            var UserToAdd = new UserModel()
+            {
+                FirstName = form["firstname"],
+                LastName = form["lastname"],
+                Email = form["email"],
+                PhoneNumber = form["phonenumber"],
+                UserName = form["username"],
+                PasswordHash = form["pwd"].GetHashCode().ToString(),     
+                LockoutEndDateUTC = DateTime.UtcNow.AddDays(30).ToString()
+            };
+            if (ModelState.IsValid)
+            {
+                _Db.Users.Add(UserToAdd);
+                _Db.SaveChanges();
+            }
+            return View();
+        }
+        //GET: CreateUser
+        [HttpGet]
+        public ActionResult CreateUser()
         {
             return View();
         }

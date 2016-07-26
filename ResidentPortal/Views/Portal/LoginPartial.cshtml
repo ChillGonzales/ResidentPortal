@@ -5,6 +5,14 @@
         <textarea class="form-control" id="username" name="username" rows="1"></textarea>
     </fieldset>
     <fieldset class="form-group">
-        <label for="password">Password</label>        
+        <label for="password">Password</label>
+        <input type="password" name="pwd" />
     </fieldset>
+    <fieldset class="form-group">
+        <!-- Submit button -->
+        <button class="btn btn-primary" name="submit" type="submit">Submit</button>
+    </fieldset>    
 </form>
+<div class="container">
+    @Html.ActionLink("Create New Account", "CreateUser", "Portal", null, new { @class = "btn btn-default" })
+</div>
