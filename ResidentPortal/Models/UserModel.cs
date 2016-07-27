@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using ResidentPortal.Enumeration;
 
 namespace ResidentPortal.Models
 {
@@ -53,26 +54,32 @@ namespace ResidentPortal.Models
             return null;
         }
 
-        public static async Task<bool> ValidateNewUser(ref PortalContext DB, UserModel user)
-        {            
-            var _db = DB;
-            Func<UserModel, bool> selectorAsync = userMod => Query(ref _db, userMod);
-            var retVal = await Task.Run<bool>(new Func<bool>(() => 
+        public static async Task<NewUserValidationState> ValidateNewUser(PortalContext DB, UserModel user)
+        {                        
+            var retVal = await Task.Run<NewUserValidationState>(new Func<NewUserValidationState>(() => 
                 {
-                    Query(ref _db, user);
+                    return Query(ref DB, user);
                 }));
             return retVal;
         }
 
-        private static bool Query(ref PortalContext DB, UserModel userMod)
+        private static NewUserValidationState Query(ref PortalContext DB, UserModel userMod)
         {
-            var query = from s in DB.Users where (s.UserName.ToLower() == userMod.UserName.ToLower() || s.Email.ToLower() == userMod.Email.ToLower()) select s;
-            if (query.Count() > 0)
+            var query_UserName = from s in DB.Users where (s.UserName.ToLower() == userMod.UserName.ToLower()) select s;
+            var query_Email = from s in DB.Users where (s.Email.ToLower() == userMod.Email.ToLower()) select s;
+            if (query_UserName.Count() > 0)
             {
                 //return false if there is already a user with the same username or email
-                return false;
+                return NewUserValidationState.UsernameFailed;
             }
-            return true;
+            else if (query_Email.Count() > 0)
+            {
+                return NewUserValidationState.EmailFailed;
+            }
+            else
+            {
+                return NewUserValidationState.Approved;
+            }
         }
     }    
 }

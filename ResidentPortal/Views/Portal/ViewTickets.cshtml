@@ -1,32 +1,38 @@
 ﻿@model IEnumerable<ResidentPortal.Models.MaintenanceTicketModel>
 @{    
     ViewBag.Title = "Submit A Ticket";
-    Layout = "~/Views/Portal/_PortalLayout.cshtml";
 }
-
-<h2 style="text-align:center">View Open Maintenance Tickets</h2>
-<table border="1px" align="center">
-    <thead>
-        <tr>
-            <th colspan="5" style="text-align: center">All Open Tickets</th>
-        </tr>
-        <tr>
-            <th style="text-align:center">Severity</th>
-            <th style="text-align:center">Details</th>
-            <th style="text-align:center">Requested Date</th>
-            <th style="text-align:center">Problem Area</th>
-            <th style="text-align:center">Time Submitted</th>
-        </tr>
-    </thead>
-    @foreach (var ticket in Model)
-    {
-        <tr>
-            <td>@ticket.Severity</td>
-            <td>@ticket.Details</td>
-            <td>@ticket.Req_Date</td>
-            <td>@ticket.Area</td>
-            <td>@ticket.timeSubmit</td>
-        </tr>        
-    }
-</table>
+<!DOCTYPE html>
+<html>
+<head><title>@ViewBag.Title</title></head>
+<body>
+    @using ResidentPortal.Models
+    @Html.Partial("_PortalLayout", (UserModel)ViewBag.User);
+    <h2 style="text-align:center">View Open Maintenance Tickets</h2>
+    <table border="1px" align="center">
+        <thead>
+            <tr>
+                <th colspan="5" style="text-align: center">All Open Tickets</th>
+            </tr>
+            <tr>
+                <th style="text-align:center">Severity</th>
+                <th style="text-align:center">Details</th>
+                <th style="text-align:center">Requested Date</th>
+                <th style="text-align:center">Problem Area</th>
+                <th style="text-align:center">Time Submitted</th>
+            </tr>
+        </thead>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td>@ticket.Severity</td>
+                <td>@ticket.Details</td>
+                <td>@ticket.Req_Date</td>
+                <td>@ticket.Area</td>
+                <td>@ticket.timeSubmit</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
 

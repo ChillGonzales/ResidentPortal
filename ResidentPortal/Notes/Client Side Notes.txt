@@ -1,0 +1,38 @@
+﻿Upgrades    
+    -Dashboard
+        -amount due
+        -newsletter
+        -alerts/messages
+        -utilities graph
+    -Maintenance
+        -Submit a ticket
+        -Track submitted tickets
+        -Feedback
+    -Payments (PayPal for payments?)
+        -Make a payment
+        -Set up auto payment
+        -View payment history
+    -Messages
+        -View messages
+        -Contact the apartment staff
+    -Documents
+        -View/sign lease and documents
+        -View monthly invoices for rent/utilities
+        
+    -Next steps:
+        -Implement login system
+        -Generate PDF's for monthly invoices
+        -Create a user account model that stores address, rent price, etc. 
+            -So I can generate PDF's of rent, lease, etc. all based on DB items
+        -Set up Paypal payment services
+        -Set up AWS for backend
+        -Figure out SSL cert bs
+
+REFACTOR
+    -Layouts suck apparently
+        -Can't pass different models in between layout and partial
+    -Need to use @Html.RenderAction in order to have different models in the same view
+    -Need to refactor out my current layout page and change it so that each page uses render action for navbar, etc.
+
+
+    

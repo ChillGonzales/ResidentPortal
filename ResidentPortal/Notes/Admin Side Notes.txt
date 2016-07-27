@@ -1,0 +1,5 @@
+﻿-Application system
+-Accounting system
+-Lease generation
+-Invoice generation
+-What would set me apart? 

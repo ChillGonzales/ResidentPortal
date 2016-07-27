@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ResidentPortal.Models;
+using System.Threading.Tasks;
+using ResidentPortal.Enumeration;
 
 namespace ResidentPortal.Controllers
 {
     public class PortalController : Controller
     {
         PortalContext _Db = new PortalContext();
+        UserModel _CurrentUser = new UserModel();
 
         // GET: Portal
         public ActionResult Home(UserModel userMod)
@@ -23,7 +26,7 @@ namespace ResidentPortal.Controllers
         //POST: Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateUser(FormCollection form)
+        public async Task<ActionResult> CreateUser(FormCollection form)
         {
             var UserToAdd = new UserModel()
             {
@@ -35,17 +38,26 @@ namespace ResidentPortal.Controllers
                 PasswordHash = form["pwd"].GetHashCode().ToString(),     
                 LockoutEndDateUTC = DateTime.UtcNow.AddDays(30).ToString()
             };
-            var validate = UserModel.ValidateNewUser(ref _Db, UserToAdd);
-            if (validate)
+            var validateState = await UserModel.ValidateNewUser(_Db, UserToAdd);
+            if (validateState == NewUserValidationState.EmailFailed)
             {
-                
+                ViewBag.Message = "Email Address is Already Registered With An Account. Click Above To Recover Your Password.";                
             }
-            if (ModelState.IsValid)
+            else if(validateState== NewUserValidationState.UsernameFailed)
+            {
+                ViewBag.Message = "User Name is Already Registered. Please Select A Different User Name and Try Again.";
+            }
+            else if (validateState == NewUserValidationState.Approved && ModelState.IsValid)
             {
                 _Db.Users.Add(UserToAdd);
                 _Db.SaveChanges();
             }
             return View();
+        }
+        [ChildActionOnly]
+        public ActionResult NavBarLayout()
+        {
+            return View(_CurrentUser);
         }
         //GET: CreateUser
         [HttpGet]
@@ -63,11 +75,13 @@ namespace ResidentPortal.Controllers
             {
                 return View("LoginFail");
             }
-            return View("Home", currentUser);
+            _CurrentUser = currentUser;
+            return View("Home", _CurrentUser);
         }
         public ActionResult Logout()
         {
-            return View("Home", new UserModel());
+            _CurrentUser = new UserModel();
+            return View("Home", _CurrentUser);
         }
         //GET: Contact
         public ActionResult Contact()
@@ -84,6 +98,7 @@ namespace ResidentPortal.Controllers
         [HttpPost]
         public ActionResult ViewTickets(FormCollection form)
         {
+            ViewBag.User = _CurrentUser;
             var ticketToAdd = new MaintenanceTicketModel();
             ticketToAdd.Area = form["area-select"];
             ticketToAdd.Details = form["details"];
