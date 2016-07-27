@@ -233,6 +233,8 @@
     <Content Include="Views\Portal\Login.cshtml" />
     <Content Include="Views\Portal\CreateUser.cshtml" />
     <Content Include="Views\Portal\LoginFail.cshtml" />
+    <Content Include="Views\Portal\TicketForm.cshtml" />
+    <Content Include="Views\Portal\SendMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

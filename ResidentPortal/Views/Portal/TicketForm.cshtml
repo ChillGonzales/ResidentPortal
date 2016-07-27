@@ -1,0 +1,55 @@
+﻿<form name="TicketForm" onsubmit="return ValidateForm()" method="post" action="/Portal/ViewTickets">
+    <fieldset class="form-group">
+        <label for="serverity-select">Select Severity</label>
+        <select class="form-control" id="severity-select" name="severity-select">
+            <option>Low</option>
+            <option>Moderate</option>
+            <option>Immediate</option>
+        </select>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="area-select">Select Area</label>
+        <select class="form-control" id="area-select" name="area-select">
+            <option>Bedroom</option>
+            <option>Bathroom</option>
+            <option>Kitchen</option>
+            <option>Living Room</option>
+        </select>
+    </fieldset>
+    <fieldset class="form-group">
+        <!-- Date input -->
+        <label class="control-label" for="date">Date</label>
+        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+    </fieldset>
+    <fieldset class="form-group">
+        <label class="text-label" for="details">Additional Detail</label>
+        <textarea class="form-control" id="textarea" name="details" rows="3"></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+        <!-- Submit button -->
+        <button class="btn btn-primary" name="submit" type="submit">Submit</button>
+    </fieldset>
+</form>
+<script>
+    function ValidateForm() {
+        var date = document.forms["TicketForm"]["date"].value;
+        var detail = document.forms["TicketForm"]["details"].value;
+        if (date == "" || detail == "") {
+            alert("All Fields Must Have A Value!");
+            return false;
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        var options = {
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        };
+        date_input.datepicker(options);
+    })
+</script>

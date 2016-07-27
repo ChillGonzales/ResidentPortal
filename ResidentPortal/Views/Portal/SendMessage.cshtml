@@ -1,0 +1,27 @@
+﻿<form name="SendMessage" onsubmit="return ValidateMessage()" method="post" action="/Portal/MessageSent">
+    <fieldset class="form-group">
+        <label class="text-label" for="subject">Subject</label>
+        <textarea class="form-control" id="subject" name="subject" rows="1"></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+        <label class="text-label" for="msgbody">Message</label>
+        <textarea class="form-control" id="msgbody" name="msgbody" rows="4"></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+        <!-- Submit button -->
+        <button class="btn btn-primary" name="sendmsg" type="submit">Send Message</button>
+    </fieldset>
+</form>
+<script>
+    function ValidateMessage() {
+        var date = document.forms["SendMessage"]["subject"].value;
+        var detail = document.forms["SendMessage"]["msgbody"].value;
+        if (date == "" || detail == "") {
+            alert("All Fields Must Have A Value!");
+            return false;
+        }
+        else {
+
+        }
+    }
+</script>

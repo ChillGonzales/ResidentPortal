@@ -17,59 +17,67 @@
       
     <title>@ViewBag.Title</title>
 </head>
-<body>
-    @Html.AntiForgeryToken()
-    <div class="navbar navbar-inverse navbar-fixed-top">     
-    <a class="navbar-brand" href="/Portal/Home">Resident Portal</a>           
-        <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Maintenance<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#ModalSubmit" data-toggle="modal">Submit a Work Order</a></li>
-                    <li><a href="/Portal/ViewTickets">Manage Work Orders</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Submit Feedback</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Payments<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="/Portal/MakePayment">Make A Payment</a></li>
-                    <li class="divider"></li>
-                    <li><a href="/Portal/AutoPay">Set Up Auto Pay</a></li>
-                    <li><a href="/Portal/PayHistory">View Payment History</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">                    
-                    <li><a href="#ModalSendMessage" data-toggle="modal">Send A Message</a></li>
-                    <li class="divider"></li>
-                    <li><a href="/Portal/MessageCenter">Message Center</a></li>
-                </ul>      
-            </li>              
-            <li><a href="/Portal/Documents">Documents</a></li>
-            <li><a style="text-align:right" href="#ModalLogin" data-toggle="modal">Login</a></li>            
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                @{string useText;}
-                @if (Model.FirstName == null)
-                {
-                    useText = "Login";
-                }
-                else
-                {
-                    useText = Model.FirstName + " " + Model.LastName;
-                }
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@useText<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="/Portal/ViewAccount">View Account</a></li>
-                    <li><a href="/Portal/Logout">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>    
+<body>    
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/Portal/Home">Resident Portal</a>           
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Maintenance<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#ModalSubmit" data-toggle="modal">Submit a Work Order</a></li>
+                        <li><a href="/Portal/ViewTickets">Manage Work Orders</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Submit Feedback</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Payments<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/Portal/MakePayment">Make A Payment</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/Portal/AutoPay">Set Up Auto Pay</a></li>
+                        <li><a href="/Portal/PayHistory">View Payment History</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#ModalSendMessage" data-toggle="modal">Send A Message</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/Portal/MessageCenter">Message Center</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Portal/Documents">Documents</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/portal/createuser"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+                <li class="dropdown">
+                    @{string useText;}
+                    @if (Model.FirstName == null)
+                    {
+                        useText = "Login";
+                    }
+                    else
+                    {
+                        useText = Model.FirstName + " " + Model.LastName;
+                    }
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@useText<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/Portal/ViewAccount">View Account</a></li>
+                        <li><a href="/Portal/Logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div> 
     <div id="ModalLogin" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -82,7 +90,6 @@
     <!-- Modal -->
     <div id="ModalSubmit" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
@@ -90,42 +97,8 @@
                     <h4 class="modal-title">Submit Work Order</h4>
                 </div>
                 <div class="modal-body">
-                    <form name="TicketForm" onsubmit="return ValidateForm()" method="post" action="/Portal/ViewTickets">
-                        <fieldset class="form-group">
-                            <label for="serverity-select">Select Severity</label>
-                            <select class="form-control" id="severity-select" name="severity-select">
-                                <option>Low</option>
-                                <option>Moderate</option>
-                                <option>Immediate</option>
-                            </select>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label for="area-select">Select Area</label>
-                            <select class="form-control" id="area-select" name="area-select">
-                                <option>Bedroom</option>
-                                <option>Bathroom</option>
-                                <option>Kitchen</option>
-                                <option>Living Room</option>
-                            </select>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <!-- Date input -->
-                            <label class="control-label" for="date">Date</label>
-                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <label class="text-label" for="details">Additional Detail</label>
-                            <textarea class="form-control" id="textarea" name="details" rows="3"></textarea>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <!-- Submit button -->
-                            <button class="btn btn-primary" name="submit" type="submit">Submit</button>
-                        </fieldset>
-                    </form>
-                </div>
-                @*<div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>*@
+                    @Html.Partial("TicketForm")
+                </div>                
             </div>
 
         </div>
@@ -138,20 +111,7 @@
                     <h4 class="modal-title">Send Message</h4>
                 </div>
                 <div class="modal-body">
-                    <form name="SendMessage" onsubmit="return ValidateMessage()" method="post" action="/Portal/MessageSent"> 
-                        <fieldset class="form-group">
-                            <label class="text-label" for="subject">Subject</label>
-                            <textarea class="form-control" id="subject" name="subject" rows="1"></textarea>
-                        </fieldset>                                                             
-                        <fieldset class="form-group">
-                            <label class="text-label" for="msgbody">Message</label>
-                            <textarea class="form-control" id="msgbody" name="msgbody" rows="4"></textarea>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <!-- Submit button -->
-                            <button class="btn btn-primary" name="sendmsg" type="submit">Send Message</button>
-                        </fieldset>
-                    </form>
+                    @Html.Partial("SendMessage")
                 </div>
             </div>
         </div>
@@ -166,39 +126,3 @@
     </div>
 </body>
 </html>
-<script>
-    function ValidateForm() {
-        var date = document.forms["TicketForm"]["date"].value;
-        var detail = document.forms["TicketForm"]["details"].value;
-        if (date == "" || detail == "") {
-            alert("All Fields Must Have A Value!");
-            return false;
-        }
-    }
-</script>
-<script>
-    function ValidateMessage() {
-        var date = document.forms["SendMessage"]["subject"].value;
-        var detail = document.forms["SendMessage"]["msgbody"].value;
-        if (date == "" || detail == "") {
-            alert("All Fields Must Have A Value!");
-            return false;
-        }
-        else {
-
-        }
-    }
-</script>
-<script>
-    $(document).ready(function () {
-        var date_input = $('input[name="date"]'); //our date input has the name "date"
-        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-        var options = {
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        };
-        date_input.datepicker(options);
-    })
-</script>
