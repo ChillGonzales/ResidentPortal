@@ -48,3 +48,11 @@ Temporary Items
 bin/ResidentPortal.dll
 obj/Debug/ResidentPortal.dll
 ResidentPortal.v12.suo
+
+#Output files don't need to be committed
+/bin/*
+/obj/*
+/vs/*
+*.suo
+/packages/*
+
