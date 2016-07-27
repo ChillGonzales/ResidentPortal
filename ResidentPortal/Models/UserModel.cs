@@ -24,6 +24,26 @@ namespace ResidentPortal.Models
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
-        public string LastName { get; set; }        
-    }
+        public string LastName { get; set; }
+
+        public static UserModel ValidateUser(ref PortalContext DB, string user, string pwdhash)
+        {
+            var query = from s in DB.Users where (s.UserName.ToLower() == user.ToLower() && s.PasswordHash.ToLower() == pwdhash.ToLower()) select s;
+            UserModel UserResult;
+            try
+            {
+                UserResult = query.First();
+            }
+            catch
+            {
+                return null;
+            }
+
+            if (UserResult != null)
+            {
+                return UserResult;
+            }
+            return null;
+        }
+    }    
 }

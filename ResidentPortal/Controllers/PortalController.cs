@@ -12,8 +12,12 @@ namespace ResidentPortal.Controllers
         PortalContext _Db = new PortalContext();
 
         // GET: Portal
-        public ActionResult Home()
+        public ActionResult Home(UserModel userMod)
         {
+            if (userMod != null)
+            {
+                return View(userMod);
+            }
             return View();
         }
         //POST: Login
@@ -43,6 +47,22 @@ namespace ResidentPortal.Controllers
         public ActionResult CreateUser()
         {
             return View();
+        }
+        //POST: Login
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(FormCollection form)
+        {
+            var currentUser = UserModel.ValidateUser(ref _Db, form["username"], form["pwd"].GetHashCode().ToString());
+            if (currentUser == null)
+            {
+                return View("LoginFail");
+            }
+            return View("Home", currentUser);
+        }
+        public ActionResult Logout()
+        {
+            return View("Home", new UserModel());
         }
         //GET: Contact
         public ActionResult Contact()

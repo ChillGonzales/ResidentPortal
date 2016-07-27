@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model ResidentPortal.Models.UserModel
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -17,6 +18,7 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    @Html.AntiForgeryToken()
     <div class="navbar navbar-inverse navbar-fixed-top">     
     <a class="navbar-brand" href="/Portal/Home">Resident Portal</a>           
         <ul class="nav navbar-nav">
@@ -47,7 +49,25 @@
                 </ul>      
             </li>              
             <li><a href="/Portal/Documents">Documents</a></li>
-            <li><a style="text-align:right" href="#ModalLogin" data-toggle="modal">Login</a></li>
+            <li><a style="text-align:right" href="#ModalLogin" data-toggle="modal">Login</a></li>            
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                @{string useText;}
+                @if (Model.FirstName == null)
+                {
+                    useText = "Login";
+                }
+                else
+                {
+                    useText = Model.FirstName + " " + Model.LastName;
+                }
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@useText<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="/Portal/ViewAccount">View Account</a></li>
+                    <li><a href="/Portal/Logout">Logout</a></li>
+                </ul>
+            </li>
         </ul>
     </div>    
     <div id="ModalLogin" class="modal fade" role="dialog">

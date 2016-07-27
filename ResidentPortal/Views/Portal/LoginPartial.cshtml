@@ -1,5 +1,6 @@
-﻿
-<form name="LoginForm" method="post" action="/portal/login">
+﻿@using (Html.BeginForm("Login","Portal"))
+{
+    @Html.AntiForgeryToken()    
     <fieldset class="form-group">
         <label for="username">Username</label>
         <textarea class="form-control" id="username" name="username" rows="1"></textarea>
@@ -10,9 +11,8 @@
     </fieldset>
     <fieldset class="form-group">
         <!-- Submit button -->
-        <button class="btn btn-primary" name="submit" type="submit">Submit</button>
-    </fieldset>    
-</form>
-<div class="container">
+        <button class="btn btn-primary" name="submit" type="submit">Login</button>
+    </fieldset>        
+
     @Html.ActionLink("Create New Account", "CreateUser", "Portal", null, new { @class = "btn btn-default" })
-</div>
+}

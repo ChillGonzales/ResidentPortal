@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ResidentPortal.Models.UserModel
+@{    
     Layout = "~/Views/Portal/_PortalLayout.cshtml";
     ViewBag.Title = "Home Page";
 }
@@ -9,6 +10,12 @@
     <div class="col-lg-9 col-md-8">
         <h1>Say Hello to my Home Page!</h1>
     </div>
+    @if (Model != null)
+    {
+        <div class="container">
+            <h1>@Model.FirstName @Model.LastName is logged in!</h1>
+        </div>
+    }
 </div>
 
 
