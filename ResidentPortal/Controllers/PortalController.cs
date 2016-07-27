@@ -35,6 +35,11 @@ namespace ResidentPortal.Controllers
                 PasswordHash = form["pwd"].GetHashCode().ToString(),     
                 LockoutEndDateUTC = DateTime.UtcNow.AddDays(30).ToString()
             };
+            var validate = UserModel.ValidateNewUser(ref _Db, UserToAdd);
+            if (validate)
+            {
+                
+            }
             if (ModelState.IsValid)
             {
                 _Db.Users.Add(UserToAdd);

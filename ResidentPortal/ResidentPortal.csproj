@@ -235,6 +235,8 @@
     <Content Include="Views\Portal\LoginFail.cshtml" />
     <Content Include="Views\Portal\TicketForm.cshtml" />
     <Content Include="Views\Portal\SendMessage.cshtml" />
+    <Content Include="Views\Portal\NoUserDropDown.cshtml" />
+    <Content Include="Views\Portal\UserLoggedInDropDown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

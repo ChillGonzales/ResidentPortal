@@ -58,26 +58,20 @@
                 <li><a href="/Portal/Documents">Documents</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/portal/createuser"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-                <li class="dropdown">
-                    @{string useText;}
-                    @if (Model.FirstName == null)
+                <li><a href="/portal/createuser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li class="dropdown">                    
+                    @if (Model == null || Model.FirstName == null)
                     {
-                        useText = "Login";
+                        @Html.Partial("NoUserDropDown")
                     }
                     else
                     {
-                        useText = Model.FirstName + " " + Model.LastName;
-                    }
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@useText<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/Portal/ViewAccount">View Account</a></li>
-                        <li><a href="/Portal/Logout">Logout</a></li>
-                    </ul>
+                        @Html.Partial("UserLoggedInDropDown", @Model)
+                    }                    
                 </li>
             </ul>
         </div>
-    </div> 
+    </div>     
     <div id="ModalLogin" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
