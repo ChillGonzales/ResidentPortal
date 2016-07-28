@@ -6,8 +6,7 @@
 <html>
 <head><title>@ViewBag.Title</title></head>
 <body>
-    @using ResidentPortal.Models
-    @Html.Partial("_PortalLayout", (UserModel)ViewBag.User);
+    @Html.Action("NavBarLayout")
     <h2 style="text-align:center">View Open Maintenance Tickets</h2>
     <table border="1px" align="center">
         <thead>

@@ -9,11 +9,7 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     @*<link href="~/Content/navleft.css" rel="stylesheet" />*@
-    <meta name="viewport" content="width=device-width" />
-    <!-- Bootstrap Date-Picker Plugin -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-
+    <meta name="viewport" content="width=device-width" />    
 
     <title>@ViewBag.Title</title>
 </head>
@@ -58,7 +54,10 @@
                 <li><a href="/Portal/Documents">Documents</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/portal/createuser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                @if (Model == null || Model.FirstName == null)
+                {                    
+                    <li><a href="/portal/createuser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                }
                 <li class="dropdown">
                     @if (Model == null || Model.FirstName == null)
                     {

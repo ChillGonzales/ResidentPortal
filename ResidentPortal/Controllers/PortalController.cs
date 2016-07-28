@@ -12,7 +12,7 @@ namespace ResidentPortal.Controllers
     public class PortalController : Controller
     {
         PortalContext _Db = new PortalContext();
-        UserModel _CurrentUser = new UserModel();
+        private static UserModel _CurrentUser;
 
         // GET: Portal
         public ActionResult Home(UserModel userMod)
@@ -57,6 +57,10 @@ namespace ResidentPortal.Controllers
         [ChildActionOnly]
         public ActionResult NavBarLayout()
         {
+            if (_CurrentUser == null)
+            {
+                _CurrentUser = new UserModel();
+            }
             return View(_CurrentUser);
         }
         //GET: CreateUser
@@ -76,7 +80,7 @@ namespace ResidentPortal.Controllers
                 return View("LoginFail");
             }
             _CurrentUser = currentUser;
-            return View("Home", _CurrentUser);
+            return RedirectToAction("Home", "Portal", _CurrentUser);
         }
         public ActionResult Logout()
         {

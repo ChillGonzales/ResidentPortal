@@ -1,8 +1,15 @@
 ﻿@{
-    ViewBag.Title = "Message Sent!";
-    Layout = "~/Views/Portal/_PortalLayout.cshtml";
+    ViewBag.Title = "Message Sent!";    
 }
-<div class="container">
-    <div class="jumbotron" style="text-align: center">Thank you for reaching out.</div>
-    <h4 style="text-align:center">We will be sure to contact you shortly.</h4>
-</div>    
+<!DOCTYPE html>
+<html>
+<head><title>@ViewBag.Title</title></head>
+<body>
+    @Html.Action("NavBarLayout")
+    <div class="container">
+        <div class="jumbotron" style="text-align: center">Thank you for reaching out.</div>
+        <h4 style="text-align:center">We will be sure to contact you shortly.</h4>
+    </div>    
+</body>
+</html>
+
