@@ -115,4 +115,3 @@ C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\Mi
 C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\obj\Debug\ResidentPortal.dll
 C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\obj\Debug\ResidentPortal.pdb
-C:\Users\colin.monroe\Documents\Source Code\ResidentPortal\ResidentPortal\obj\Debug\ResidentPortal.csprojResolveAssemblyReference.cache
