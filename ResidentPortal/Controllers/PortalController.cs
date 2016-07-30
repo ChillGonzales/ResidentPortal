@@ -80,7 +80,7 @@ namespace ResidentPortal.Controllers
                 return View("LoginFail");
             }
             _CurrentUser = currentUser;
-            return RedirectToAction("Home", "Portal", _CurrentUser);
+            return View("Home", _CurrentUser);
         }
         public ActionResult Logout()
         {
